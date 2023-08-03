@@ -1,0 +1,34 @@
+# CMAKE_INSTALL_PREFIX在debian rules中已设置
+SET(CMAKE_INSTALL_PREFIX /usr)
+
+SET(LIBFUNC_UTILS_SRC utils/func_utils.c)
+
+ADD_LIBRARY(func_utils SHARED ${LIBFUNC_UTILS_SRC})
+
+ADD_LIBRARY(func_utils_static STATIC ${LIBFUNC_UTILS_SRC})
+
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/src/lib)
+message(STATUS "lib ouput " ${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
+
+# 设置动态库生成路径
+SET_TARGET_PROPERTIES(func_utils PROPERTIES
+    LIBRARY_OUTPUT_DIRECTORY ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}
+)
+# 设置静态库生成路径
+SET_TARGET_PROPERTIES(func_utils_static PROPERTIES
+    ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_LIBRARY_OUTPUT_DIRECTORY}
+)
+
+SET_TARGET_PROPERTIES(func_utils_static PROPERTIES OUTPUT_NAME func_utils)
+# SET_TARGET_PROPERTIES(func_utils_static PROPERTIES CLEAN_DIRECT_OUTPUT 1)
+
+# SET_TARGET_PROPERTIES(func_utils PROPERTIES CLEAN_DIRECT_OUTPUT 1)
+# 动态库包含版本号，设置版本号属性，VERSION指代动态库版本，SOVERSION指代API版本。soversion也可以是除里数字的其他字符
+SET_TARGET_PROPERTIES(func_utils PROPERTIES VERSION 1.2 SOVERSION s)
+
+# install
+INSTALL(TARGETS func_utils func_utils_static
+    LIBRARY DESTINATION lib  # 动态库
+    ARCHIVE DESTINATION lib)  # 静态库用archive关键字
+# INSTALL(FILES ...)命令会将指定的文件安装到指定的目标路径。它主要用于安装一些非构建过程中生成的文件，如配置文件、脚本等。    
+INSTALL(FILES utils/func_utils.h DESTINATION include/func_utils)

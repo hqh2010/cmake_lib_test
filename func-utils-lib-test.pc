@@ -1,0 +1,14 @@
+prefix=/usr
+libdir=${prefix}/lib/
+includedir=${prefix}/include
+
+datadir=${prefix}/share
+bindir=${prefix}/bin
+
+Name: func-utils-test
+Description: func-utils library
+Version: 1.0.0
+Libs: -L${libdir} -lfunc_utils
+Libs.private: -ldl -pthread
+Cflags: -I${includedir}
+

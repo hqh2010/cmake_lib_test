@@ -1,0 +1,11 @@
+Package: func-utils-lib-test
+Version: 1.0.0-1
+Architecture: amd64
+Maintainer: Deepin Packages xxxxxx <packages@deepin.com>
+Installed-Size: 32
+Depends: libc6 (>= 2.2.5)
+Section: admin
+Priority: optional
+Homepage: http://www.deepin.org
+Description: func-utils-lib-test.
+ func-utils-lib-test for for lib test.
