@@ -19,3 +19,5 @@ gcc main.c -fpie -pie -o main $(pkg-config --cflags --libs func-utils-lib-test)
 # 参考文档
 
 * [pkg-config的简单用法](https://blog.csdn.net/feng__shuai/article/details/126916291)
+
+* https://github.com/Liuyvjin/notebook/tree/master/Cmake
