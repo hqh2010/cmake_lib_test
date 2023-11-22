@@ -16,7 +16,7 @@ gcc main.c -fpie -pie -o main $(pkg-config --cflags --libs func-utils-lib-test)
 
 ![](./result.png)
 
-# # # 注意事项：
+#### 注意事项：
 
 1. 可以将静态库libtest.a链接到动态库.so中（target_link_libraries(my_dynamic_lib /home/staticlib/libtest.a)），但静态库编译时必须加-fPIC编译参数。
 
